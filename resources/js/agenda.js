@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.getElementById("btnEditar").addEventListener("click", function(){
       
-      enviarDados("/evento/editar/"+formulario.id.value);
+      enviarDados("/evento/atualizar/"+formulario.id.value);
 
     });
     

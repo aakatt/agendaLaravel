@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\EventoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('evento.index');
-})->middleware("auth");
+Route::get('/', [EventoController::class, 'home']);
 
 Auth::routes();
 
@@ -23,13 +23,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-Route::get('/evento', [App\Http\Controllers\EventoController::class, 'index']);
-Route::post ('/evento/mostrar', [App\Http\Controllers\EventoController::class, 'show']);
-Route::post('/evento/adicionar', [App\Http\Controllers\EventoController::class, 'store']);
-Route::post('/evento/editar/{id}', [App\Http\Controllers\EventoController::class, 'edit']);
-Route::post('/evento/editar/{evento}', [App\Http\Controllers\EventoController::class, 'update']);
-Route::post('/evento/excluir/{id}', [App\Http\Controllers\EventoController::class, 'destroy']);
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/evento', [EventoController::class, 'index']);
+Route::post ('/evento/mostrar', [EventoController::class, 'show']);
+Route::post('/evento/adicionar', [EventoController::class, 'store']);
+Route::post('/evento/editar/{id}', [EventoController::class, 'edit']);
+Route::post('/evento/atualizar/{evento}', [EventoController::class, 'update']);
+Route::post('/evento/excluir/{id}', [EventoController::class, 'destroy']);
 
 });

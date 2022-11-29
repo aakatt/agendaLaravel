@@ -20,6 +20,11 @@ class EventoController extends Controller
         return view('evento.index');
     }
 
+    public function home()
+    {
+        return redirect("/evento");
+    }
+
     /**
      * Show the form for creating a new resource.
      *
